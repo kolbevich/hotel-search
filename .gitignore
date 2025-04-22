@@ -43,7 +43,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/.cxx
 
 # Environment files
 .env
 lib/env.g.dart
+lib/i18n/strings.g.dart
+
+#vs code and other
+.vscode/settings.json
+devtools_options.yaml
