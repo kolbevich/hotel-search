@@ -44,6 +44,6 @@ flutter:
 patrol:
   app_name: Hotel Booking
   android:
-    package_name:  com.example.hotel_booking
+    package_name: com.example.hotel_booking
   ios:
     bundle_id: com.example.hotelBooking
