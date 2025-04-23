@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking/constants/lib/key_constants.dart';
 import 'package:hotel_booking/features/hotels/domain/entities/entities.dart';
 
 class HotelCard extends StatelessWidget {
@@ -34,11 +35,13 @@ class HotelCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
+                      key: K.hotelCardTitleKey,
                       hotel.name,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     if (hotel.description != null)
                       Text(
+                        key: K.holetCardDescriptionKey,
                         hotel.description!,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
@@ -47,6 +50,7 @@ class HotelCard extends StatelessWidget {
               ),
             ),
             IconButton(
+              key: K.hotelCardFavoriteIconButtonKey,
               icon: Icon(Icons.favorite_outline),
               selectedIcon: Icon(Icons.favorite),
               isSelected: isFavorite,

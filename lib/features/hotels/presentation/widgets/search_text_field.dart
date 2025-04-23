@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hotel_booking/i18n/strings.g.dart';
+import 'package:hotel_booking/constants/lib/key_constants.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -17,6 +18,7 @@ class SearchTextField extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return TextField(
+      key: K.searchBarKey,
       controller: controller,
       focusNode: focusNode,
       decoration: InputDecoration(
@@ -31,6 +33,7 @@ class SearchTextField extends StatelessWidget {
           child: Icon(Icons.search),
         ),
         suffixIcon: IconButton(
+          key: K.clearSearchBarIconButtonKey,
           onPressed: controller.clear,
           icon: Icon(Icons.cancel_outlined),
         ),

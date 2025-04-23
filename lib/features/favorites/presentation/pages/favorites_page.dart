@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotel_booking/constants/lib/key_constants.dart';
 
 import 'package:hotel_booking/features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:hotel_booking/features/hotels/presentation/widgets/hotel_card.dart';
@@ -15,13 +16,14 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.favorites.title),
+        title: Text(key: K.favoriteScreenTitleKey, t.favorites.title),
       ),
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           if (state.items.isEmpty) {
             return Center(
               child: Icon(
+                key: K.favoritesEmptyIconKey,
                 Icons.favorite_outline,
                 size: 150,
                 color: Theme.of(context).colorScheme.surfaceContainerHighest,

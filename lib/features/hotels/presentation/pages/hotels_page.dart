@@ -7,6 +7,7 @@ import 'package:hotel_booking/features/favorites/presentation/bloc/favorites_blo
 import 'package:hotel_booking/features/hotels/presentation/bloc/hotels_bloc.dart';
 import 'package:hotel_booking/features/hotels/presentation/widgets/widgets.dart';
 import 'package:hotel_booking/i18n/strings.g.dart';
+import 'package:hotel_booking/constants/lib/key_constants.dart';
 
 @RoutePage()
 class HotelsPage extends StatefulWidget {
@@ -77,6 +78,7 @@ class _HotelsPageState extends State<HotelsPage> {
           if (state.items.isEmpty) {
             if (state.loading) {
               return Center(
+                key: K.searchReloadLoaderKey,
                 child: CircularProgressIndicator(),
               );
             } else if (state.hasError) {
@@ -100,6 +102,7 @@ class _HotelsPageState extends State<HotelsPage> {
             } else {
               return Center(
                 child: Icon(
+                  key: K.searchResultsEmptyIconKey,
                   Icons.hotel_outlined,
                   size: 150,
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
@@ -139,6 +142,7 @@ class _HotelsPageState extends State<HotelsPage> {
                   child: SizedBox(
                     height: 100,
                     child: Center(
+                      key: K.searchLoadNextLoaderKey,
                       child: CircularProgressIndicator(),
                     ),
                   ),
