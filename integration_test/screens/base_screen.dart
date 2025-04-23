@@ -6,6 +6,7 @@ import 'package:patrol/patrol.dart';
 import '../utils/test_extension.dart';
 import 'favorites_screen.dart';
 import 'hotels_screen.dart';
+import 'overview_screen.dart';
 
 abstract class BaseScreen {
   final PatrolIntegrationTester tester;
@@ -22,7 +23,8 @@ abstract class BaseScreen {
     Map<Key, Finder> elements = {};
     for (final Key key in initKeys) {
       final element = find.byKey(key);
-      expect(element, findsOneWidget);
+      expect(element, findsOneWidget,
+          reason: "Expected to find element with key $key on the current screen");
       elements.addAll({
         key: element,
       });
@@ -49,9 +51,10 @@ class TabBar {
     return HotelsScreen(tester);
   }
 
-  // TODO: make this method return screen object
-  Future<void> openOverviewScreen() async {
+  Future<OverviewScreen> openOverviewScreen() async {
     await tester.tapByKey(K.overviewTabKey);
+
+    return OverviewScreen(tester);
   }
 
   // TODO: make this method return screen object

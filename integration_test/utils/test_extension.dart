@@ -3,9 +3,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking/main.dart';
 import 'package:patrol/patrol.dart';
 
+import '../screens/overview_screen.dart';
+
 extension TestExtension on PatrolIntegrationTester {
-  Future<void> openApp({int? loadDelay}) async {
+  Future<OverviewScreen> openApp() async {
     await pumpWidget(App(), const Duration(seconds: 5));
+
+    await pump(const Duration(seconds: 2));
+
+    return OverviewScreen(this);
   }
 
   Future<void> tapByKey(Key key, {int pumpFrames = 1}) async {
