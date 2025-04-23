@@ -1,3 +1,4 @@
+# invoke from project root using absolute path
 # dont forget to make this file an executable (chomd +x for mac)
 
 # set up patrol cli

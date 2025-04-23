@@ -1,4 +1,5 @@
-# execute in root
+# invoke from project root using absolute path
+# dont forget to make this file an executable (chomd +x for mac)
 
 # set up patrol cli
 dart pub global activate patrol_cli   
@@ -13,12 +14,12 @@ gcloud --quiet config set project buenro-hotel-search
 patrol build android --target integration_test/dummy_test.dart
 
 #upload to FB test lab
-gcloud firebase test android run \     
-    --type instrumentation \
-    --use-orchestrator \
-    --app build/app/outputs/apk/debug/app-debug.apk \
-    --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
-    --timeout 1m \
-    --device model=MediumPhone.arm,version=34,locale=en,orientation=portrait \
-    --record-video \
-    --environment-variables clearPackageData=true
+gcloud firebase test android run \
+  --type instrumentation \
+  --use-orchestrator \
+  --app build/app/outputs/apk/debug/app-debug.apk \
+  --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
+  --timeout 1m \
+  --device model=MediumPhone.arm,version=34,locale=en,orientation=portrait \
+  --record-video \
+  --environment-variables clearPackageData=true
