@@ -1,14 +1,14 @@
 # 🧪 Integration Tests for Hotel Search App
 
 This directory contains integration tests for the **Hotel Search Flutter application**. Here you can find:
-● Documentation of environment setup
-● Script for running tests across multiple devices
-● A list of all required dependencies and versions is in the pubspec.yaml file.
-● Core Test Scenarios
-● Documentation of test structure
-● Complete test suite implementation of said scenarios 
-● Instructions for running tests
-● Test results and coverage reports (Allure format)
+- Documentation of environment setup
+- Script for running tests across multiple devices
+- List of all required dependencies and versions is in the pubspec.yaml file.
+- Core Test Scenarios
+- Documentation of test structure
+- Complete test suite implementation of said scenarios 
+- Instructions for running tests
+- Test results and coverage reports (Allure format)
 
 
 ## Environment setup
