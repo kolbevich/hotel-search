@@ -55,7 +55,12 @@ iOS dummy_test.dart run, iPhone 15 18.0
 Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 34
 ![image](https://github.com/user-attachments/assets/ed0ceef0-12b8-4c8b-a408-ffca9a69a473)
 
-## 🎯 How to run a single test
+#### Screenshots of executed tests
+<img width="1092" alt="image" src="https://github.com/user-attachments/assets/e417b79c-751a-4007-a3b9-fa1a188b9b5d" />
+<img width="1092" alt="image" src="https://github.com/user-attachments/assets/3aeccc9c-834e-441e-a8a9-0bbf9a019701" />
+
+
+### 🎯 How to run a single test
 In the hotel-search/ root
 Make sure the patrol cli is active:
 - `dart pub global activate patrol_cli`
