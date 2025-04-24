@@ -55,7 +55,7 @@ Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 
 
 This app’s integration suite validates key user flows, UI behavior, and feature correctness. Below is a breakdown of what each test file covers:
 
-### 🏁 1 Default Tab Behavior
+###  1 Default Tab Behavior
 **File:** `tests/default_tab_chosen_test.dart`  
 **Test Case:** Verify that the Overview tab is the default active tab when the app launches.  
 - Launch the app  
@@ -63,7 +63,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 🔍 2 Basic Hotel Search
+###  2 Basic Hotel Search
 **File:** `tests/hotel_search_test.dart`  
 **Test Case:** Verify that typing a valid search query returns hotel results.  
 - Enter a search term (e.g., "London")  
@@ -71,7 +71,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 📜 3 Search Scroll
+###  3 Search Scroll
 **File:** `tests/search_scroll_test.dart`  
 **Test Case:** Ensure the user can scroll through a long list of hotel results.  
 - Perform a search  
@@ -80,7 +80,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 😢 4 Empty State on Search
+###  4 Empty State on Search
 **File:** `tests/hotel_screen_empty_test.dart`  
 **Test Case:** Display an empty state of Hotels screen.  
 - Open Hotels screen and do not perform search
@@ -88,7 +88,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### ❤️ 5 Add to Favorites from Search
+###  5 Add to Favorites from Search
 **File:** `tests/favorite_from_search_test.dart`  
 **Test Case:** Verify that adding a hotel to favorites from the search screen works correctly.  
 - Perform a search  
@@ -101,7 +101,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 💔 6 Remove from Favorites
+###  6 Remove from Favorites
 **File:** `tests/unfavorite_test.dart`  
 **Test Case:** Unfavorite a hotel on Favorites screen and verify it's removed from the list.  
 - Add a hotel to favorites 
@@ -111,7 +111,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 🕳️ 7 Empty Favorites Screen
+###  7 Empty Favorites Screen
 **File:** `tests/favorites_empty_test.dart`  
 **Test Case:** Show an empty state when the favorites list is empty.  
 - Open app
@@ -120,7 +120,7 @@ This app’s integration suite validates key user flows, UI behavior, and featur
 
 ---
 
-### 🔁 8 Tab Navigation with Search Context
+###  8 Tab Navigation with Search Context
 **File:** `tests/search_and_tab_change_test.dart`  
 **Test Case:** Switching tabs preserves app state appropriately.  
 - Perform a hotel search  
