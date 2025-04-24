@@ -62,19 +62,19 @@ Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 
 
 ### 🎯 How to run a single test
 In the hotel-search/ root
-Make sure the patrol cli is active:
-- `dart pub global activate patrol_cli`
-Run a test in debug mode:
-- `patrol develop --target integration_test/tests/<test_file_name>`
-Run a test in release mode:
-- `patrol test --target integration_test/tests/<test_file_name>`
-Run on a specific device:
-- Get device ID from the list of devices `patrol devices`, then
+- Make sure the patrol cli is active:
+  `dart pub global activate patrol_cli`
+- Run a test in debug mode:
+  `patrol develop --target integration_test/tests/<test_file_name>`
+- Run a test in release mode:
+  `patrol test --target integration_test/tests/<test_file_name>`
+- Run on a specific device:
+  Get device ID from the list of devices `patrol devices`, then
   `patrol test --target integration_test/tests/<test_file_name> -d <device_id>`
-- Or specify the device model like this
+  Or specify the device model like this
   `patrol test --target integration_test/tests/<test_file_name> -d "iPhone 15 pro"`
-Run with more logs:
-- `patrol test --target integration_test/tests/<test_file_name> --verbose`
+- Run with more logs:
+  `patrol test --target integration_test/tests/<test_file_name> --verbose`
 
 
 ## ✅ /tests Test Scenarios
