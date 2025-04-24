@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
 // START: GENERATED TEST IMPORTS
-import 'tests/hotel_search_test.dart' as tests__hotel_search_test;
+import 'tests/favorite_from_search_test.dart' as tests__favorite_from_search_test;
 // END: GENERATED TEST IMPORTS
 
 Future<void> main() async {
@@ -16,6 +16,6 @@ Future<void> main() async {
         debugDefaultTargetPlatformOverride;
 
   // START: GENERATED TEST GROUPS
-  group('tests.hotel_search_test', tests__hotel_search_test.main);
+  group('tests.favorite_from_search_test', tests__favorite_from_search_test.main);
   // END: GENERATED TEST GROUPS
 }
