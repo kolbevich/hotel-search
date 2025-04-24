@@ -14,10 +14,21 @@ This directory contains integration tests for the **Hotel Search Flutter applica
 - `html_allure_report/` — Contains the Allure HTML test report.
 - `dummy_test.dart` — A sample test used to validate setup.
 
-## 🔁 Integration with Firebase Test Lab for parallel test execution
+## 🔁 /scripts
 
+### Run E2E tests (local/run_all.sh)
+Runs all tests in the integration_test/test catalog. For more info, check the script file.
+
+### Run E2E tests with Allure report (local/run_all_ios_allure_report.sh)
+Runs all tests on iOS. Uses allure-xcresult package to convert native reports to Allure.
+Screenshot of what an integrated Allure report looks like
+![image](https://github.com/user-attachments/assets/b8a69d70-a929-4dc5-8980-bb29c1c600a1)
+Most of the tests failed due to this issue I started experiencing yesterday
+![image](https://github.com/user-attachments/assets/7ab716a0-534f-4964-84c1-230fecd9b875)
+
+### Integration with Firebase Test Lab for parallel test execution (fb_test_lab/fb_fun_dummy_both_test.sh)
 Integration tests for both **iOS** and **Android** platforms are executed in parallel using a custom shell script that leverages **Firebase Test Lab**, **Patrol CLI**, and **Gcloud CLI**.
-The integration required setting up a Firebase project, creating a service account in Gcloud, and generatinga  .json key. The key is stored locally. I can grant access to Firebase and the Google Cloud projects upon request. 
+The integration required setting up a Firebase project, creating a service account in Gcloud, and generating a  .json key. The key is stored locally. I can grant access to Firebase and the Google Cloud projects upon request. 
 
 The script performs the following:
 
@@ -28,17 +39,12 @@ The script performs the following:
 5. **Runs Android tests** via `gcloud firebase test android run` with support for test orchestrator, video recording, and custom device config.
 6. **Waits for both jobs** to complete with the `wait` command, enabling parallelism.
 
-### The screenshots of 2 tests running in FB Test Lab at the same time.
+#### The screenshots of 2 tests running in FB Test Lab at the same time.
 
 iOS dummy_test.dart run, iPhone 15 18.0
 ![image](https://github.com/user-attachments/assets/324df90e-f2b5-4084-b06e-b56462563c19)
 Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 34
 ![image](https://github.com/user-attachments/assets/ed0ceef0-12b8-4c8b-a408-ffca9a69a473)
-
-### Screenshot of what an integrated Allure report looks like
-![image](https://github.com/user-attachments/assets/b8a69d70-a929-4dc5-8980-bb29c1c600a1)
-Most of the tests failed due to this issue I started experiencing yesterday
-![image](https://github.com/user-attachments/assets/7ab716a0-534f-4964-84c1-230fecd9b875)
 
 
 ## ✅ Test Scenarios
