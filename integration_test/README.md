@@ -27,6 +27,7 @@ This directory contains integration tests for the **Hotel Search Flutter applica
 - `report/` — Stores generated test results.
 - `html_allure_report/` — Contains the Allure HTML test report.
 - `dummy_test.dart` — A sample test used to validate setup.
+- `test_bundle.dart` - A patrol-generated test suite file
 
 ## 🔁 /scripts
 
