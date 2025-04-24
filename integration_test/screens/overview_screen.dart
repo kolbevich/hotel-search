@@ -9,9 +9,4 @@ class OverviewScreen extends BaseScreen {
           tester: tester,
           screenElements: [K.overviewScreenTitleKey, K.overviewEmptyIconKey],
         );
-
-  // TODO: search smth
-  // TODO: clear search
-  // TODO: scroll to
-  // TODO: is empty
 }
