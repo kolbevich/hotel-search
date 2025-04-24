@@ -46,6 +46,28 @@ class FavoritesScreen extends BaseScreen {
     await favoriteButtonFinders.at(index).tap();
   }
 
+  Future<void> unfavoriteBy({required String title}) async {
+    final titleFinders = tester(K.hotelCardTitleKey).evaluate();
+
+    // Loop through and find the index of the title that matches
+    int? matchIndex;
+    for (int i = 0; i < titleFinders.length; i++) {
+      final widget = titleFinders.elementAt(i).widget as Text;
+      if (widget.data == title) {
+        matchIndex = i;
+        break;
+      }
+    }
+
+    // If not found, throw an error
+    if (matchIndex == null) {
+      throw Exception('No hotel card found with title "$title"');
+    }
+
+    // Tap the favorite icon at the same index
+    await tester(K.hotelCardFavoriteIconButtonKey).at(matchIndex).tap();
+  }
+
   Future<bool> isEmpty() async {
     final emptyIconFinder = tester(K.favoritesEmptyIconKey);
 
