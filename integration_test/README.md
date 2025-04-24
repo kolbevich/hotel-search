@@ -47,7 +47,7 @@ Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 
 ![image](https://github.com/user-attachments/assets/ed0ceef0-12b8-4c8b-a408-ffca9a69a473)
 
 
-## ✅ Test Scenarios
+## ✅ /tests Test Scenarios
 
 This app’s integration suite validates key user flows, UI behavior, and feature correctness. Below is a breakdown of what each test file covers:
 
