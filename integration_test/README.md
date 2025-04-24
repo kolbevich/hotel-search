@@ -42,7 +42,7 @@ Screenshot of what an integrated Allure report looks like
 Most of the tests failed due to this issue I started experiencing yesterday
 ![image](https://github.com/user-attachments/assets/7ab716a0-534f-4964-84c1-230fecd9b875)
 
-### How to run a dummy test with Firebase Test Lab for parallel test execution (fb_test_lab/fb_fun_dummy_both_test.sh)
+### How to run a dummy test with Firebase Test Lab for parallel test execution
 Use `fb_test_lab/fb_fun_dummy_both_test.sh`. Make it an executable, and invoke it from the project root using an absolute path. 
 For now, the script runs a dummy example test, which is basically a mock just to test that the intergation with Firebase Test Lab and native test executables works fine. Dummy test for both **iOS** and **Android** platforms is executed in parallel on 2 unique devices using a custom shell script that leverages **Firebase Test Lab**, **Patrol CLI**, and **Gcloud CLI**.
 The integration required setting up a Firebase project, creating a service account in Gcloud, and generating a  .json key. The key is stored locally. I can grant access to Firebase and the Google Cloud projects upon request. 
