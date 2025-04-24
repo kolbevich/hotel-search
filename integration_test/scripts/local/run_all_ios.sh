@@ -4,5 +4,5 @@
 #activate patrol
 dart pub global activate patrol_cli 3.5.1
 
-#run tests
-patrol test --target integration_test/tests --verbose -d "iPhone SE (3rd generation)"
+#run tests, specify device if needed w -d option
+patrol test --target integration_test/tests --verbose 
