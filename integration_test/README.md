@@ -2,9 +2,9 @@
 
 This directory contains integration tests for the **Hotel Search Flutter application**. These tests verify that user-facing features work as intended when interacting with the UI.
 ## Environment setup
-Integrating Patrol: https://patrol.leancode.co/documentation
-Integration Firebase Test Lab: https://patrol.leancode.co/documentation/ci/firebase-test-lab
-Integrating Allure: https://medium.com/@kolbevich/how-to-make-allure-work-with-patrol-tests-in-ci-cd-a03800fbe223
+- Integrating Patrol: https://patrol.leancode.co/documentation
+- Integration Firebase Test Lab: https://patrol.leancode.co/documentation/ci/firebase-test-lab
+- Integrating Allure: https://medium.com/@kolbevich/how-to-make-allure-work-with-patrol-tests-in-ci-cd-a03800fbe223
 
 ---
 
