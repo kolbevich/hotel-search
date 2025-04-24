@@ -11,8 +11,6 @@ void main() {
     await $.openApp();
     final tabs = TabBar($);
 
-    await $.wait(seconds: 5);
-
     final hotelsScreen = await tabs.openHotelsScreen();
     await hotelsScreen.searchBarEnter(text: "London");
 
