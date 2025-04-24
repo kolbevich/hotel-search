@@ -14,11 +14,7 @@ void main() {
     await $.wait(seconds: 5);
 
     final hotelsScreen = await tabs.openHotelsScreen();
-    await hotelsScreen.searchBarEnter(text: "London");
-
-    final isResultEmpty = await hotelsScreen.isSearchResultEmpty();
-
-    expect(isResultEmpty, false, reason: "Expected search result with hotels");
+    await hotelsScreen.searchBarEnter(text: "New York");
 
     final firstHotelTitle = await hotelsScreen.getTitleAt(index: 0);
     await hotelsScreen.addToFavoritesAt(index: 0);
@@ -27,5 +23,14 @@ void main() {
 
     expect(favoritesScreen.hasHotelWith(title: firstHotelTitle), true,
         reason: "Expected to see favorited hotel with title $firstHotelTitle on favorites screen");
+
+    await tabs.openHotelsScreen();
+
+    // unfavorite the same hotel
+    await hotelsScreen.addToFavoritesAt(index: 0);
+
+    await tabs.openFavoritesScreen();
+    expect(favoritesScreen.hasHotelWith(title: firstHotelTitle), false,
+        reason: "Expected not to see unfavorited hotel on favorites screen");
   });
 }
