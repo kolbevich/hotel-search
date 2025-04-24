@@ -41,6 +41,8 @@ Screenshot of what an integrated Allure report looks like
 ![image](https://github.com/user-attachments/assets/b8a69d70-a929-4dc5-8980-bb29c1c600a1)
 Most of the tests failed due to this issue I started experiencing yesterday
 ![image](https://github.com/user-attachments/assets/7ab716a0-534f-4964-84c1-230fecd9b875)
+<img width="1234" alt="image" src="https://github.com/user-attachments/assets/aa289241-120e-4ddf-b0d9-b1c4456e64e2" />
+
 
 ### How to run a dummy test with Firebase Test Lab for parallel test execution
 Use `fb_test_lab/fb_fun_dummy_both_test.sh`. Make it an executable, and invoke it from the project root using an absolute path. 
