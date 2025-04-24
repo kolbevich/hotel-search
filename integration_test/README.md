@@ -1,6 +1,16 @@
 # 🧪 Integration Tests for Hotel Search App
 
-This directory contains integration tests for the **Hotel Search Flutter application**. These tests verify that user-facing features work as intended when interacting with the UI.
+This directory contains integration tests for the **Hotel Search Flutter application**. Here you can find:
+● Documentation of environment setup
+● Script for running tests across multiple devices
+● A list of all required dependencies and versions is in the pubspec.yaml file.
+● Core Test Scenarios
+● Documentation of test structure
+● Complete test suite implementation of said scenarios 
+● Instructions for running tests
+● Test results and coverage reports (Allure format)
+
+
 ## Environment setup
 - Integrating Patrol: https://patrol.leancode.co/documentation
 - Integration Firebase Test Lab: https://patrol.leancode.co/documentation/ci/firebase-test-lab
@@ -20,28 +30,23 @@ This directory contains integration tests for the **Hotel Search Flutter applica
 
 ## 🔁 /scripts
 
-### Run E2E tests (local/run_all.sh)
-Runs all tests in the integration_test/test catalog. For more info, check the script file.
+### How to run all E2E tests 
+Use `local/run_all.sh` script, make it an executable, and invoke it from the project root using an absolute path.
+The script runs all tests in the integration_test/test catalog. For more, please check the script file.
 
-### Run E2E tests with Allure report (local/run_all_ios_allure_report.sh)
-Runs all tests on iOS. Uses allure-xcresult package to convert native reports to Allure.
+### How to run E2E tests with Allure report 
+Use `local/run_all_ios_allure_report.sh` script. Make it an executable and invoke it from the project root using an absolute path as well.
+The script all tests on iOS. Uses allure-xcresult package to convert native reports to Allure.
 Screenshot of what an integrated Allure report looks like
 ![image](https://github.com/user-attachments/assets/b8a69d70-a929-4dc5-8980-bb29c1c600a1)
 Most of the tests failed due to this issue I started experiencing yesterday
 ![image](https://github.com/user-attachments/assets/7ab716a0-534f-4964-84c1-230fecd9b875)
 
-### Integration with Firebase Test Lab for parallel test execution (fb_test_lab/fb_fun_dummy_both_test.sh)
-Integration tests for both **iOS** and **Android** platforms are executed in parallel using a custom shell script that leverages **Firebase Test Lab**, **Patrol CLI**, and **Gcloud CLI**.
+### How to run a dummy test with Firebase Test Lab for parallel test execution (fb_test_lab/fb_fun_dummy_both_test.sh)
+Use `fb_test_lab/fb_fun_dummy_both_test.sh`. Make it an executable, and invoke it from the project root using an absolute path. 
+For now, the script runs a dummy example test, which is basically a mock just to test that the intergation with Firebase Test Lab and native test executables works fine. Dummy test for both **iOS** and **Android** platforms is executed in parallel on 2 unique devices using a custom shell script that leverages **Firebase Test Lab**, **Patrol CLI**, and **Gcloud CLI**.
 The integration required setting up a Firebase project, creating a service account in Gcloud, and generating a  .json key. The key is stored locally. I can grant access to Firebase and the Google Cloud projects upon request. 
-
-The script performs the following:
-
-1. **Sets up Patrol CLI and gcloud** tools.
-2. **Builds iOS tests** (`Runner.xctestrun`) for physical device via Patrol (simulators aren't supported on Firebase Test Lab).
-3. **Zips the test artifacts** and runs the iOS tests in the background using `gcloud firebase test ios run`.
-4. **Builds Android test APKs** via Patrol.
-5. **Runs Android tests** via `gcloud firebase test android run` with support for test orchestrator, video recording, and custom device config.
-6. **Waits for both jobs** to complete with the `wait` command, enabling parallelism.
+For more, please check the script file. 
 
 #### The screenshots of 2 tests running in FB Test Lab at the same time.
 
@@ -49,6 +54,22 @@ iOS dummy_test.dart run, iPhone 15 18.0
 ![image](https://github.com/user-attachments/assets/324df90e-f2b5-4084-b06e-b56462563c19)
 Android dummy_test.dart run, Medium Phone, 6.4in/16cm (Arm), Virtual, API Level 34
 ![image](https://github.com/user-attachments/assets/ed0ceef0-12b8-4c8b-a408-ffca9a69a473)
+
+## 🎯 How to run a single test
+In the hotel-search/ root
+Make sure the patrol cli is active:
+- `dart pub global activate patrol_cli`
+Run a test in debug mode:
+- `patrol develop --target integration_test/tests/<test_file_name>`
+Run a test in release mode:
+- `patrol test --target integration_test/tests/<test_file_name>`
+Run on a specific device:
+- Get device ID from the list of devices `patrol devices`, then
+  `patrol test --target integration_test/tests/<test_file_name> -d <device_id>`
+- Or specify the device model like this
+  `patrol test --target integration_test/tests/<test_file_name> -d "iPhone 15 pro"`
+Run with more logs:
+- `patrol test --target integration_test/tests/<test_file_name> --verbose`
 
 
 ## ✅ /tests Test Scenarios
