@@ -30,7 +30,7 @@ workflows:
         - name: Activate GCloud CLI
           script: | 
              gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT_JSON
-             gcloud --quiet config set project $PROJECT_ID
+             gcloud --quiet config set project $FIREBASE_PROJECT_ID
         - name: Build test executables
           script: |
               patrol build ios --target integration_test/dummy_test.dart --release --verbose
