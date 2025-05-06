@@ -1,5 +1,42 @@
 workflows:
-  # This is a dummy test workflow for iOS with reporting
+    all_test-ios-workflow:
+        name: Dummy test iOS workflow
+        max_build_duration: 120
+        instance_type: mac_mini_m2
+        environment:
+          groups:
+            - serpapi_credentials
+          flutter: 3.29.2
+          xcode: 16.2 
+          cocoapods: default
+        cache:
+          cache_paths:
+            - $HOME/.pub-cache
+            - $HOME/Library/Caches/CocoaPods
+        scripts:
+        - name: Get Flutter packages
+          script: | 
+              flutter pub get
+        - name: Generate .env file
+          script: |
+            echo "SERPAPI_API_KEY=$SERPAPI_API_KEY" > .env
+        - name: Run code generation
+          script: dart run build_runner build --delete-conflicting-outputs
+        - name: Install pods
+          script: | 
+              find . -name "Podfile" -execdir pod install \;
+        - name: Activate Patrol CLI
+          script: | 
+              dart pub global activate patrol_cli   
+        - name: Run simulator
+          script: | 
+              xcrun simctl boot $( xcrun simctl list devices | grep -m 1 'iPhone 16 Pro' | grep -E -o -i '([0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})')
+              open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+        - name: Run patrol tests
+          script: |
+              patrol test --targets integration_test/tests --verbose -d "iPhone 16 Pro"
+
+    
     dummy_test-ios-workflow:
         name: Dummy test iOS workflow
         max_build_duration: 120
@@ -7,7 +44,7 @@ workflows:
         environment:
           groups:
             - serpapi_credentials
-            - github_credentials
+            #- github_credentials
           flutter: 3.29.2
           xcode: 16.2 
           cocoapods: default
@@ -56,9 +93,10 @@ workflows:
         #       allure generate --single-file $HOME/VisualStudioProjects/hotel-search/integration_test/report --report-dir $HOME/VisualStudioProjects/hotel-search/integration_test/html_allure_report --clean
         # artifacts:
         #   - integration_test/html_allure_report/*.html
+ 
+ 
  #--------------------------------- #
  # This workflow needs certificates 
-    
     dummy-test-fb-ios-workflow:
         name: Dummy test iOS workflow in Firebase TestLab
         max_build_duration: 120
