@@ -39,7 +39,7 @@ workflows:
               gcloud --quiet config set project $FIREBASE_PROJECT_ID
         - name: Build release w Flutter
           script: |
-              flutter build ios --release --no-codesign
+              flutter build ios --release
         - name: Check folders
           script: |
               pwd
