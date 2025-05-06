@@ -10,9 +10,9 @@ workflows:
           xcode: 16.2 
           cocoapods: default
         cache:
-        cache_paths:
-          - $HOME/.pub-cache
-          - $HOME/Library/Caches/CocoaPods
+          cache_paths:
+            - $HOME/.pub-cache
+            - $HOME/Library/Caches/CocoaPods
         scripts:
         - name: Get Flutter packages
           script: | 
