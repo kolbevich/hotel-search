@@ -43,12 +43,11 @@ workflows:
               dart pub global activate patrol_cli   
         - name: Run simulator
           script: | 
-              xcrun simctl list devices
-              xcrun simctl boot $( xcrun simctl list devices | grep -m 1 'iPhone 15 Pro' | grep -E -o -i '([0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})')
+              xcrun simctl boot $( xcrun simctl list devices | grep -m 1 'iPhone 16 Pro' | grep -E -o -i '([0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})')
               open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
         - name: Run patrol tests
           script: |
-              patrol test --target integration_test/dummy_test.dart --verbose -d "iPhone 15 Pro"
+              patrol test --target integration_test/dummy_test.dart --verbose -d "iPhone 16 Pro"
         # - name: Generate Allure report
         #   script: |
         #       cd allure-xcresult 
