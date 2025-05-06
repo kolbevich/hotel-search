@@ -16,11 +16,11 @@ workflows:
             - $HOME/.pub-cache
             - $HOME/Library/Caches/CocoaPods
         scripts:
-        - echo $GOOGLE_SERVICE_ACCOUNT > $GOOGLE_SERVICE_ACCOUNT_JSON
-        - echo "Service account file generated"
         - name: Get Flutter packages
           script: | 
               flutter pub get
+        - name: Run code generation
+          script: dart run build_runner build --delete-conflicting-outputs
         - name: Install pods
           script: | 
               find . -name "Podfile" -execdir pod install \;
@@ -29,8 +29,10 @@ workflows:
               dart pub global activate patrol_cli   
         - name: Activate GCloud CLI
           script: | 
-             gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT_JSON
-             gcloud --quiet config set project $FIREBASE_PROJECT_ID
+              echo $GOOGLE_SERVICE_ACCOUNT > $GOOGLE_SERVICE_ACCOUNT_JSON
+              echo "Service account file generated"
+              gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT_JSON
+              gcloud --quiet config set project $FIREBASE_PROJECT_ID
         - name: Build release w Flutter
           script: |
               flutter build ios --release --no-codesign
