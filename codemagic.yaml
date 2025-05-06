@@ -31,9 +31,13 @@ workflows:
           script: | 
              gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT_JSON
              gcloud --quiet config set project $FIREBASE_PROJECT_ID
+        - name: Build release w Flutter
+          script: |
+              flutter build ios --release --no-codesign
         - name: Build test executables
           script: |
-              patrol build ios --target integration_test/dummy_test.dart --release --verbose
+              sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+              patrol build ios --target integration_test/dummy_test.dart --release --verbose --device "iPhone 15"
         - name: Archive executables
           script: |
               pushd build/ios_integ/Build/Products
