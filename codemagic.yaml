@@ -1,0 +1,42 @@
+workflows:
+    dummy-test-ios-workflow:
+        name: Dummy test iOS workflow
+        max_build_duration: 120
+        instance_type: mac_mini_m2
+        environment:
+          groups:
+            - google_credentials
+          flutter: 3.29.2
+          xcode: 16.2 
+          cocoapods: default
+        cache:
+        cache_paths:
+          - $HOME/.pub-cache
+          - $HOME/Library/Caches/CocoaPods
+        scripts:
+        - name: Get Flutter packages
+          script: | 
+              flutter pub get
+        - name: Install pods
+          script: | 
+              find . -name "Podfile" -execdir pod install \;
+        - name: Activate Patrol CLI
+          script: | 
+              dart pub global activate patrol_cli   
+        - name: Activate GCloud CLI
+          script: | 
+             gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT
+             gcloud --quiet config set project $PROJECT_ID
+        - name: Build test executables
+          script: |
+              patrol build ios --target integration_test/dummy_test.dart --release --verbose
+        - name: Archive executables
+          script: |
+              pushd build/ios_integ/Build/Products
+              zip -r ios_tests.zip Release-iphoneos *.xctestrun
+              popd
+        - name: Upload to FB TestLAb and run tests
+          script: |
+              gcloud firebase test ios run \
+                --test build/ios_integ/Build/Products/ios_tests.zip \
+                --device model=iphone15,version=18.0,locale=en_US,orientation=portrait
