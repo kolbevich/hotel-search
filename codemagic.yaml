@@ -9,11 +9,15 @@ workflows:
           flutter: 3.29.2
           xcode: 16.2 
           cocoapods: default
+          vars:
+            GOOGLE_SERVICE_ACCOUNT_JSON: $CM_BUILD_DIR/service-account.json
         cache:
           cache_paths:
             - $HOME/.pub-cache
             - $HOME/Library/Caches/CocoaPods
         scripts:
+        - echo $GOOGLE_SERVICE_ACCOUNT > $GOOGLE_SERVICE_ACCOUNT_JSON
+        - echo "Service account file generated"
         - name: Get Flutter packages
           script: | 
               flutter pub get
@@ -25,7 +29,7 @@ workflows:
               dart pub global activate patrol_cli   
         - name: Activate GCloud CLI
           script: | 
-             gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT
+             gcloud auth activate-service-account --key-file=$GOOGLE_SERVICE_ACCOUNT_JSON
              gcloud --quiet config set project $PROJECT_ID
         - name: Build test executables
           script: |
