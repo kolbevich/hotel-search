@@ -44,7 +44,7 @@ workflows:
           script: |
               pwd
               ls 
-              cd /build
+              cd build
               ls
               cd ../
         - name: Build test executables
