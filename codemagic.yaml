@@ -43,7 +43,7 @@ workflows:
         - name: Build test executables
           script: |
               sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-              patrol build ios --target integration_test/dummy_test.dart --release --verbose --device "iPhone 15"
+              patrol build ios --target integration_test/dummy_test.dart --release --verbose
         - name: Archive executables
           script: |
               pushd build/ios_integ/Build/Products
