@@ -2,7 +2,7 @@ workflows:
   # This is a dummy test workflow for iOS
 
     dummy_test-ios-workflow:
-        name: Dummy test iOS workflow
+        name: Dummy test iOS workflow with Allure
         max_build_duration: 120
         instance_type: mac_mini_m2
         environment:
@@ -16,6 +16,17 @@ workflows:
             - $HOME/.pub-cache
             - $HOME/Library/Caches/CocoaPods
         scripts:
+        - name: Install and setup allure-xcresult
+          script: |
+            git clone https://$GH_USERNAME:$GH_TOKEN@github.com/kvld/allure-xcresult.git
+            cd allure-xcresult 
+            swift package init --type executable
+            swift build
+            swift run AllureXCResult --version
+        - name: Install Allure
+          script: |
+            brew install allure
+            allure --version
         - name: Get Flutter packages
           script: | 
               flutter pub get
@@ -37,12 +48,19 @@ workflows:
         - name: Run patrol tests
           script: |
               patrol test --target integration_test/dummy_test.dart --verbose -d "iPhone 16 Pro"
-
+        - name: Generate Allure report
+          script: |
+              cd allure-xcresult 
+              swift run AllureXCResult --input `cd $HOME/VisualStudioProjects/hotel-search/build/*.xcresult && pwd` --output  $HOME/VisualStudioProjects/hotel-search/integration_test/report 
+              cd ../
+              allure generate --single-file $HOME/VisualStudioProjects/hotel-search/integration_test/report --report-dir $HOME/VisualStudioProjects/hotel-search/integration_test/httml_allure_report --clean
+        artifacts:
+          - integration_test/httml_allure_report/*.html
  #--------------------------------- #
  # This workflow needs certificates 
     
     dummy-test-fb-ios-workflow:
-        name: Dummy test iOS workflow
+        name: Dummy test iOS workflow in Firebase TestLab
         max_build_duration: 120
         instance_type: mac_mini_m2
         environment:
