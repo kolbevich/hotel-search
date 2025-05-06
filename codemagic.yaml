@@ -6,6 +6,7 @@ workflows:
         environment:
           groups:
             - google_credentials
+            - serpapi_credentials
           flutter: 3.29.2
           xcode: 16.2 
           cocoapods: default
@@ -19,6 +20,9 @@ workflows:
         - name: Get Flutter packages
           script: | 
               flutter pub get
+        - name: Generate .env file
+          script: |
+            echo "SERPAPI_API_KEY=$SERPAPI_API_KEY" > .env
         - name: Run code generation
           script: dart run build_runner build --delete-conflicting-outputs
         - name: Install pods
