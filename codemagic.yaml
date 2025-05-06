@@ -44,9 +44,9 @@ workflows:
           script: |
               pwd
               ls 
-              cd /build/ios_integ/
-              cd ../../
-        - name: Build test executables
+              cd /build
+              ls
+              cd ../
           script: |
               sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
               patrol build ios --target integration_test/dummy_test.dart --release --verbose
