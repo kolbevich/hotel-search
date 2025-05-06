@@ -7,6 +7,7 @@ workflows:
         environment:
           groups:
             - serpapi_credentials
+            - github_credentials
           flutter: 3.29.2
           xcode: 16.2 
           cocoapods: default
